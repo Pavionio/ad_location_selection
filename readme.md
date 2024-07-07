@@ -39,7 +39,7 @@ venv\Scripts\activate
 
 pip install -r requirements.txt
 
-4. Скачать веса модели и по ссылке: https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing
+4. Скачать веса модели и по [ссылке](https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing)
 и поместить в каталог с исполняемым файлом(run.py)
 
 5. Запустить сервер
@@ -61,6 +61,6 @@ python run.py
 
 ## Ссылки
 
-Архив с программой -   
+Архив с программой - https://disk.yandex.ru/d/PDrmD3VLThSvGQ
 Скринкаст -   
 Веса моделей можно найти в файле [models.md](https://github.com/Pavionio/ad_location_selection/blob/main/models/models.md)
