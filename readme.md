@@ -30,22 +30,22 @@
 
 1. Создать виртуальную среду 
 
-python venv -m venv
+`python venv -m venv`
 
 2. Активировать виртульную среду
 
-venv\Scripts\activate
+`venv\Scripts\activate`
 
 3. Установить зависимости
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 4. Скачать веса модели и по [ссылке](https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing)
 и поместить в каталог с исполняемым файлом(run.py)
 
 5. Запустить сервер
 
-python run.py
+`python run.py`
 
 ## Как пользоваться?
 При попадании на сайт можно выбрать любой из доступных видов визуализации геоданных: обычная карта, heatmap и полигоны.
