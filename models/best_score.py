@@ -8,4 +8,5 @@ df1.mean()
 #%%
 df1.value = ((df1.value + df2.value + df3.value) / 3)
 #%%
+df1.value += 1
 df1.to_csv('submit_merged.csv', index=False)
