@@ -63,5 +63,5 @@
 ## Ссылки
 
 Архив с программой - https://disk.yandex.ru/d/PDrmD3VLThSvGQ   
-Скринкаст -   
+Скринкаст -  https://disk.yandex.ru/i/HTQDN1aEqS5sXQ   
 Веса моделей можно найти в файле [models.md](https://github.com/Pavionio/ad_location_selection/blob/main/models/models.md)
