@@ -23,7 +23,7 @@
 ## Структура
 
 [/models](https://github.com/Pavionio/ad_location_selection/tree/main/models) - все модели которые используются в программе или для сабмита    
-[/preprocessing](https://github.com/Pavionio/ad_location_selection/tree/main/preprocessing) - здесь хранятся различные файлы для предобработки данных
+[/preprocessing](https://github.com/Pavionio/ad_location_selection/tree/main/preprocessing) - здесь хранятся различные файлы для предобработки данных   
 [/map](https://github.com/Pavionio/ad_location_selection/tree/main/map) - сайт с картой и интерфейсом
 
 ## Как запустить?
