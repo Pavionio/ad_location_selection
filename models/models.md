@@ -11,3 +11,4 @@ Model_heatmap - используемая в веб-интерфейсе, для 
 ## Model_without_nn_3
 Обучение - [model_without_nn_3_train.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/model_without_nn_3_train.ipynb)   
 Предсказание - [predict_ag.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/predict_ag.ipynb)    
+Веса - https://drive.google.com/drive/folders/1UV9y0IprhdEffIvChVn1i563LfxPEzA9?usp=sharing (скачать всё и поместить в папку и дать ссылку в TabularPredictor.load())   
