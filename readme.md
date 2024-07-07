@@ -22,11 +22,13 @@
 
 ## Структура
 
-...
+[/models](https://github.com/Pavionio/ad_location_selection/tree/main/models) - все модели которые используются в программе или для сабмита
+[/preprocessing](https://github.com/Pavionio/ad_location_selection/tree/main/preprocessing) - здесб хранятся различные файлы для предобработки данных
 
 ## Как запустить?
 
-[/models](https://github.com/Pavionio/ad_location_selection/tree/main/models) - все модели которые используются в программе или для сабмита
+...
+
 ## Ссылки
 
 Архив с программой -   
