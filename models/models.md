@@ -16,3 +16,7 @@ Model_heatmap - используемая в веб-интерфейсе, для 
 Обучение - [model_without_nn_5_train.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/model_without_nn_5_train.ipynb)   
 Предсказание - [predict_ag.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/predict_ag.ipynb)    
 Веса - https://drive.google.com/drive/folders/1AIC4seq9Vo1D3VUDCydSh32QDH2ugKYU?usp=sharing (скачать всё и поместить в папку и дать ссылку в TabularPredictor.load())  
+## Model_wnn32222
+Обучение - [model_wnn32222_train.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/model_wnn32222_train.ipynb)   
+Предсказание - [predict_ag.ipynb](https://github.com/Pavionio/ad_location_selection/blob/main/models/predict_ag.ipynb)    
+Веса - https://drive.google.com/drive/folders/18RqXWytaExDXCgP8lZ2IxvNG_youX9Wi?usp=sharing (скачать всё и поместить в папку и дать ссылку в TabularPredictor.load())  
