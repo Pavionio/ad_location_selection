@@ -40,7 +40,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 Скачать веса модели и по ссылке: https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing
-И поместить в каталог с исполняемым файлом(run.py)
+и поместить в каталог с исполняемым файлом(run.py)
 
 Запустить сервер
 
