@@ -26,10 +26,9 @@
 
 ## Как запустить?
 
-...
-
+[/models](https://github.com/Pavionio/ad_location_selection/tree/main/models) - все модели которые используются в программе или для сабмита
 ## Ссылки
 
 Архив с программой -   
 Скринкаст -   
-Веса моделей -   
+Веса моделей можно найти в файле [models.md](https://github.com/Pavionio/ad_location_selection/blob/main/models/models.md)
