@@ -27,22 +27,22 @@
 
 ## Как запустить?
 
-Создать виртуальную среду 
+1)Создать виртуальную среду 
 
 python venv -m venv
 
-Активировать виртульную среду
+2)Активировать виртульную среду
 
 venv\Scripts\activate
 
-Установить зависимости
+3)Установить зависимости
 
 pip install -r requirements.txt
 
-Скачать веса модели и по ссылке: https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing
+4)Скачать веса модели и по ссылке: https://drive.google.com/file/d/1Z27Us179j-gzMEx9IuFItxn_3GpIba50/view?usp=sharing
 и поместить в каталог с исполняемым файлом(run.py)
 
-Запустить сервер
+5)Запустить сервер
 
 python run.py
 
