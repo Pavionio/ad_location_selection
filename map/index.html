@@ -1,0 +1,200 @@
+<head>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{{ url_for('static', filename='js/leaflet-heat.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+</head>
+
+<body>
+
+  <div class="row mt-5 ml-5">
+    <div class="col-md-6">
+      <div class="form-check form-check-inline mb-4">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlinemapRadio1" value="option1"  onclick="ShowMap()" checked>
+        <label class="form-check-label" style="font-size: larger;" for="inlinemapRadio1">Обычная карта</label>
+      </div>
+      <div class="form-check form-check-inline mb-4">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlinemapRadio2" value="option2"  onclick="HideMap()">
+        <label class="form-check-label" style="font-size: larger;" for="inlinemapRadio2">Heatmap</label>
+      </div>
+      <div class="form-check form-check-inline mb-4">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlinemapRadio3" value="option2"  onclick="ShowPoligoneMap()">
+        <label class="form-check-label" style="font-size: larger;" for="inlinemapRadio3">Полигоны</label>
+      </div>
+      
+      <div id="map"></div>
+
+    </div>
+    <div class="col-md-6">
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="OnTabChange()">Предсказание</a>
+          <a class="nav-link" id="nav-file-tab" data-bs-toggle="tab" href="#nav-file" role="tab" aria-controls="nav-file" aria-selected="false" onclick="OnTabChange()">Файл</a>
+
+            </div>
+      </nav>
+    
+    
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+          <p class="mt-2 h5">Параметры</p>
+
+          <p class="mt-4 h6">Ориентировочная возрастная группа аудитории</p>
+          <div class="form-inline" id="age-param" >
+            <input type="text" class="form-control form-control-sm mb-2 mr-sm-2" id="age-coodinate-field1" placeholder="От">
+            <input type="text" class="form-control form-control-sm mb-2 mr-sm-2" id="age-coodinate-field2" placeholder="До">
+          </div>
+
+          <p class="mt-4 h6">Уровень дохода аудитории</p>
+          <div id="income-param">
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="a">
+            <label class="form-check-label" for="inlineCheckbox1">Очень Высокий</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="b">
+            <label class="form-check-label" for="inlineCheckbox2">Высокий</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="c">
+            <label class="form-check-label" for="inlineCheckbox3">Средний</label>
+          </div>
+
+        </div>
+          <p></p>
+          <select class="form-select form-select-lg mt-3" id="sex-param" aria-label="Default select example">
+            <option value="null" selected>Пол</option>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+            <option value="all">Оба</option>
+          </select>
+
+    
+
+
+          <div class="input-group mb-3 mt-4" id="predCount-input">
+            <span class="input-group-text" id="predCount-field">Выберите количество рекомендуемых меток</span>
+            <input type="text" class="form-control" aria-describedby="predCount-field" >
+          </div>
+          <p></p>
+          <button type="button" class="btn btn-link" onclick="Predict()">Предсказать</button>
+          <div id="list-mark-predict-warnings">
+
+            <div class="alert alert-danger add-map mt-3 d-none form_warning" role="alert">
+              <b>Заполните верно</b> все формы перед отправкой данных 
+            </div>
+            <div class="alert alert-success mt-3 d-none wait-warning" role="alert">
+              Пожалуйста, подождите, модель <b>генерирует предсказания</b> 
+            </div>
+            <div class="alert alert-success mt-3 d-none green-warning" role="alert">
+              Предсказания успешно <b>выведены на карту</b>
+            </div>
+
+          </div>
+
+        </div>
+      
+        <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
+
+          <div class="form-check mt-2">
+            <input class="form-check-input mt-1" type="radio" name="exampleRadios" id="address-radio" value="address" checked>
+              <p class="ml-1" style="font-size: large;" for="address-radio">Добавить метку по адресу</p>
+
+          </div>
+          <div class="form-check mt-2">
+            <input class="form-check-input mt-1" type="radio" name="exampleRadios" id="coordinate-radio" value="coodinate">
+            <p class="ml-1" style="font-size: large;" for="coordinate-radio">Добавить метку по координатам</p>
+          </div>
+
+          <div class="input-group mb-3 mt-2" id="adress-input">
+            <span class="input-group-text" id="address-field">Адрес</span>
+            <input type="text" class="form-control" aria-describedby="address-field" >
+          </div>
+          
+          <div class="form-inline d-none" id="coodinate-input" >
+            <input type="text" class="form-control mb-2 mr-sm-2" id="coodinate-field2" placeholder="Широта">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="coodinate-field1" placeholder="Долгота">
+          </div>
+
+          <div id="mark-save-fields-for-text-add">
+
+            <label class="form-label mt-3"><b>Параметры</b></label>
+            <div class="input-group mb-3 mt-2">
+              <span class="input-group-text" id="watch_count1">Количество просмотров</span>
+              <input type="text" class="form-control" aria-describedby="watch_count1">
+            </div>
+    
+            <div class="input-group mb-3">
+              <span class="input-group-text">Количество заказов в районе</span>
+              <input type="text" class="form-control">
+            </div>
+    
+            <button type="button" class="btn btn-link" onclick="SubmitTextMark()">Сохранить</button>
+    
+          </div>
+          <div id="list-mark-submit-warnings-text-add">   
+            <div class="alert alert-danger add-map mt-3 d-none form_warning" role="alert">
+              <b>Заполните верно</b> все формы перед отправкой данных 
+            </div>
+
+            <div class="alert alert-danger add-map mt-3 d-none address-warning" role="alert">
+              <b>Убедитесь в правильности</b> введенного вами адреса
+            </div>
+            <div class="alert alert-success mt-3 d-none text-warning-success" role="alert">
+              Метка <b>успешно сохранена</b>
+            </div>
+          </div>
+          
+        </div>
+
+        
+        <div class="tab-pane fade" id="nav-file" role="tabpanel" aria-labelledby="nav-file-tab">
+          <p class="ml-2 mt-2">Отправьте файл с данными в формате json</p>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="markerFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          <button type="button" class="btn btn-link" onclick="SendMarkFile()">Отправить</button>
+        
+          <div id="list-mark-submit-warnings-file">   
+            <div class="alert alert-danger add-map mt-3 d-none file-warning-upload" role="alert">
+              Пожалуйста, <b>выберите файл</b> для загрузки 
+            </div>
+
+            <div class="alert alert-warning add-map mt-3 d-none file-warning-load" role="alert">
+              Пожалуйста, подождите, <b>файл загружается</b> 
+            </div>
+
+            <div class="alert alert-danger add-map mt-3 d-none file-warning-exception" role="alert">
+              Не удалось <b>прочитать файл</b>, пожалуйста, загрузите валидный файл
+            </div>
+            
+            <div class="alert alert-success mt-3 d-none file-warning-success" role="alert">
+              Файл <b>успешно обработан</b>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
