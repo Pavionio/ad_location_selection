@@ -23,7 +23,8 @@
 ## Структура
 
 [/models](https://github.com/Pavionio/ad_location_selection/tree/main/models) - все модели которые используются в программе или для сабмита    
-[/preprocessing](https://github.com/Pavionio/ad_location_selection/tree/main/preprocessing) - здесб хранятся различные файлы для предобработки данных
+[/preprocessing](https://github.com/Pavionio/ad_location_selection/tree/main/preprocessing) - здесь хранятся различные файлы для предобработки данных
+[/map](https://github.com/Pavionio/ad_location_selection/tree/main/map) - сайт с картой и интерфейсом
 
 ## Как запустить?
 
@@ -61,6 +62,6 @@ python run.py
 
 ## Ссылки
 
-Архив с программой - https://disk.yandex.ru/d/PDrmD3VLThSvGQ
+Архив с программой - https://disk.yandex.ru/d/PDrmD3VLThSvGQ   
 Скринкаст -   
 Веса моделей можно найти в файле [models.md](https://github.com/Pavionio/ad_location_selection/blob/main/models/models.md)
